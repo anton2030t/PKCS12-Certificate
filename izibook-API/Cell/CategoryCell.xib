@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="83" id="KGk-i7-Jjw" customClass="CategoryCell" customModule="izibook_API" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="365" height="82"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="365" height="82"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="music.house.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="2PJ-BA-3Jw">
+                        <rect key="frame" x="16" y="15.5" width="50" height="49.5"/>
+                        <color key="tintColor" red="1" green="0.90529361100000005" blue="0.38224308159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="Rh7-Ed-mHS"/>
+                            <constraint firstAttribute="width" constant="50" id="UlL-AU-MpA"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="M2H-pV-fCw">
+                        <rect key="frame" x="326.5" y="36" width="18.5" height="10.5"/>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qf1-qF-V4h">
+                        <rect key="frame" x="74" y="0.0" width="291" height="82"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                        <state key="normal" title="Category">
+                            <color key="titleColor" red="0.0" green="0.22103749650000001" blue="0.257257297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="categoryButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="j9v-No-gAV"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="M2H-pV-fCw" secondAttribute="trailing" constant="20" id="3Gj-Jx-e87"/>
+                    <constraint firstItem="qf1-qF-V4h" firstAttribute="leading" secondItem="2PJ-BA-3Jw" secondAttribute="trailing" constant="8" id="6hJ-sN-2pu"/>
+                    <constraint firstItem="2PJ-BA-3Jw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="FWL-63-Huf"/>
+                    <constraint firstItem="qf1-qF-V4h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="O1M-hj-t5o"/>
+                    <constraint firstAttribute="bottom" secondItem="2PJ-BA-3Jw" secondAttribute="bottom" constant="16" id="OQp-CE-0S1"/>
+                    <constraint firstAttribute="trailing" secondItem="qf1-qF-V4h" secondAttribute="trailing" id="UYg-xj-y0O"/>
+                    <constraint firstItem="M2H-pV-fCw" firstAttribute="centerY" secondItem="qf1-qF-V4h" secondAttribute="centerY" id="gRt-f6-E4v"/>
+                    <constraint firstItem="2PJ-BA-3Jw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="yOV-A0-IFH"/>
+                    <constraint firstAttribute="bottom" secondItem="qf1-qF-V4h" secondAttribute="bottom" id="z8M-3O-AVN"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="categoryImageView" destination="2PJ-BA-3Jw" id="0sQ-ZC-Jjk"/>
+                <outlet property="categoryLabel" destination="qf1-qF-V4h" id="zoZ-pe-yrR"/>
+                <outlet property="chevronImageView" destination="M2H-pV-fCw" id="Xfs-1i-dV2"/>
+            </connections>
+            <point key="canvasLocation" x="170.28985507246378" y="127.23214285714285"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="chevron.down" catalog="system" width="64" height="36"/>
+        <image name="music.house.fill" catalog="system" width="64" height="52"/>
+    </resources>
+</document>
