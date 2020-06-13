@@ -14,6 +14,28 @@ class WebManager {
     private let certificateURL = "https://authan-test.izibook.ru:13302/api/anonymous"
     private let catalogURL = "https://rest-test.izibook.ru:10001/api/globcat/list"
     
+    private let json: [String: Any] = [
+        "filter": ["parent": 1],
+        "view": [
+            ["code": "icon"],
+            ["code": "id"],
+            ["code": "title"],
+            ["code": "popularity"],
+            ["code": "items",
+             "view": [
+                ["code": "id"],
+                ["code": "title"],
+                ["code": "items",
+                 "view": [
+                    ["code": "id"],
+                    ["code": "title"]
+                    ]
+                ]
+                ]
+            ]
+        ]
+    ]
+    
     func getCertificate(completion: @escaping (CertificateModel?)->()) {
         
         var request = URLRequest(url: URL(string: certificateURL)!)
@@ -39,29 +61,7 @@ class WebManager {
         }.resume()
     }
     
-    func getCatalog(completion: @escaping ([CatalogModel])->()) {
-        
-        let json: [String: Any] = [
-            "filter": ["parent": 1],
-            "view": [
-                ["code": "icon"],
-                ["code": "id"],
-                ["code": "title"],
-                ["code": "popularity"],
-                ["code": "items",
-                 "view": [
-                    ["code": "id"],
-                    ["code": "title"],
-                    ["code": "items",
-                     "view": [
-                        ["code": "id"],
-                        ["code": "title"]
-                        ]
-                    ]
-                    ]
-                ]
-            ]
-        ]
+    func getCatalog(completion: @escaping (CatalogModel?)->()) {
         
         let jsonData = try? JSONSerialization.data(withJSONObject: json)
         
@@ -79,11 +79,11 @@ class WebManager {
             guard let data = data else { return }
             
             do {
-                let catalogModel = try JSONDecoder().decode([CatalogModel].self, from: data)
+                let catalogModel = try JSONDecoder().decode(CatalogModel.self, from: data)
                 completion(catalogModel)
                 print(catalogModel)
             } catch let error {
-                completion([])
+                completion(nil)
                 
                 let alert = UIAlertController(title: "Нет связи с сервером", message: "Попробуйте снова", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "ОК", style: .default))
@@ -96,27 +96,28 @@ class WebManager {
     
     
     func imageURL(imageId: String, height: String, width: String) -> String {
-        return "http://mi-test.izibook.ru/imagemanager/manager/singleget? &image=\(imageId)&h=\(height)&w=\(width)"
+        return "http://mi-test.izibook.ru/imagemanager/manager/singleget?&image=\(imageId)&h=\(height)&w=\(width)"
     }
     
     func loadImage(imageId: String, height: String, width: String, completion: @escaping ([ImageModel])->()) {
         guard let url = URL(string: imageURL(imageId: imageId, height: height, width: width)) else { return }
         
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
+        
         let session = URLSession(configuration: URLSessionConfiguration.ephemeral,
                                  delegate: URLSessionPinningDelegate(),
                                  delegateQueue: OperationQueue.main)
         
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        request.setValue("ru-RU", forHTTPHeaderField: "x-lang")
+        
         session.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
             
-            do {
-                let images = try JSONDecoder().decode([ImageModel].self, from: data)
-                completion(images)
-                print(images)
-            } catch let error {
-                completion([])
-                print(error)
-            }
+//            let images = ImageModel(image: UIImage(data: data)!)
+//            completion([images])
             
         }.resume()
     }

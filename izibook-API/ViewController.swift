@@ -11,35 +11,9 @@ import UIKit
 class ViewController: UIViewController {
 
     private let webManager = WebManager()
-    var catalogElement: CatalogElement?
+    var catalogElement = [CatalogElement]()
 
     @IBOutlet weak var myTableView: UITableView!
-        
-    var sections = [
-        
-        SectionData(
-            open: false,
-            data: [
-                CellData(title: "Subcategory1"),
-                CellData(title: "Subcategory2")
-                ]
-        ),
-        
-        SectionData(
-        open: false,
-        data: [
-            CellData(title: "Subcategory3")
-            ]
-        ),
-        
-        SectionData(
-        open: false,
-        data: [
-            CellData(title: "Subcategory4"),
-            CellData(title: "Subcategory5")
-            ]
-        )
-    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,11 +23,8 @@ class ViewController: UIViewController {
         }
         
         webManager.getCatalog { [weak self] (catalog) in
-            
-        }
-        
-        webManager.loadImage(imageId: catalogElement?.icon ?? "18", height: "50", width: "50") { [weak self] (images) in
-            
+            self?.catalogElement = catalog!.data
+            self?.myTableView.reloadData()
         }
         
         myTableView.register(UINib(nibName: SubcategoryCell.identifier, bundle: Bundle.main), forCellReuseIdentifier: SubcategoryCell.identifier)
@@ -71,7 +42,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
+        return catalogElement.count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -82,24 +53,29 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             cell.categoryLabel.tag = section
             let section = cell.categoryLabel.tag
             var indexPaths = [IndexPath]()
-            for row in self.sections[section].data.indices {
+            for row in self.catalogElement[section].items.indices {
                 let indexPath = IndexPath(row: row, section: section)
                 indexPaths.append(indexPath)
             }
             
-            let open = self.sections[section].open
-            self.sections[section].open = !open
+            let popularity = self.catalogElement[section].popularity
+            self.catalogElement[section].popularity = !popularity
             
-            cell.chevronImageView.image = open ? UIImage(systemName: "chevron.down") : UIImage(systemName: "chevron.up")
+            cell.chevronImageView.image = popularity ? UIImage(systemName: "chevron.down") : UIImage(systemName: "chevron.up")
             
-            if open {
+            if popularity {
                 self.myTableView.deleteRows(at: indexPaths, with: .fade)
             } else {
                 self.myTableView.insertRows(at: indexPaths, with: .fade)
             }
-
+            
         }
         
+        webManager.loadImage(imageId: catalogElement[section].icon, height: "75", width: "") { (images) in
+            cell.categoryImageView.image = images[section].image
+        }
+        
+        cell.categoryLabel.setTitle(catalogElement[section].title, for: .normal)
         return cell.contentView
         
     }
@@ -115,25 +91,24 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         return view
     }
-
+    
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 1.0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if !sections[section].open {
+        if !catalogElement[section].popularity {
             return 0
         }
-        return sections[section].data.count
+        return catalogElement[section].items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SubcategoryCell.identifier, for: indexPath) as! SubcategoryCell
-        let section = sections[indexPath.section]
-        cell.subcategoryLabel.setTitle(section.data[indexPath.row].title, for: .normal)
+        let section = catalogElement[indexPath.section]
+        cell.subcategoryLabel.setTitle(section.items[indexPath.row].title, for: .normal)
         
         return cell
     }
-    
     
 }

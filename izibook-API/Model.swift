@@ -80,19 +80,6 @@ struct CatalogItem: Codable {
 
 
 //
-struct ImageModel: Codable {
-    var imageId: String
-    var height: String
-    var width: String
-}
-
-
-//
-struct SectionData {
-    var open: Bool
-    var data: [CellData]
-}
-
-struct CellData {
-    var title: String
+struct ImageModel {
+    var image: UIImage
 }
