@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C36E73B2495158D007F89E0 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C36E73A2495158D007F89E0 /* DetailViewController.swift */; };
 		6C43F160249232B80062393A /* PKCS12.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C43F15F249232B80062393A /* PKCS12.swift */; };
 		6C583D042490B499001BAF4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C583D032490B499001BAF4F /* AppDelegate.swift */; };
 		6C583D062490B499001BAF4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C583D052490B499001BAF4F /* SceneDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C36E73A2495158D007F89E0 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		6C43F15F249232B80062393A /* PKCS12.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PKCS12.swift; sourceTree = "<group>"; };
 		6C583D002490B499001BAF4F /* izibook-API.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "izibook-API.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C583D032490B499001BAF4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				6C583D032490B499001BAF4F /* AppDelegate.swift */,
 				6C583D052490B499001BAF4F /* SceneDelegate.swift */,
 				6C583D072490B499001BAF4F /* ViewController.swift */,
+				6C36E73A2495158D007F89E0 /* DetailViewController.swift */,
 				6C583D202490B91A001BAF4F /* Model.swift */,
 				6C583D2A24912930001BAF4F /* WebManager.swift */,
 				6C43F15F249232B80062393A /* PKCS12.swift */,
@@ -169,6 +172,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C36E73B2495158D007F89E0 /* DetailViewController.swift in Sources */,
 				6C583D2B24912930001BAF4F /* WebManager.swift in Sources */,
 				6C583D212490B91A001BAF4F /* Model.swift in Sources */,
 				6C583D082490B499001BAF4F /* ViewController.swift in Sources */,

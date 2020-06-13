@@ -16,28 +16,22 @@
                 <rect key="frame" x="0.0" y="0.0" width="365" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jq1-iD-LsE">
-                        <rect key="frame" x="74" y="0.0" width="291" height="50"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subcategory" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pnz-EY-rbG">
+                        <rect key="frame" x="74" y="12" width="116.5" height="26"/>
                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                        <state key="normal" title="Subcategory">
-                            <color key="titleColor" red="0.0" green="0.22103749650000001" blue="0.257257297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        </state>
-                        <connections>
-                            <action selector="subcategoryButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="9Xd-4w-NYd"/>
-                        </connections>
-                    </button>
+                        <color key="textColor" red="0.0" green="0.22103749650000001" blue="0.257257297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstItem="Jq1-iD-LsE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="74" id="AqJ-Pc-1G9"/>
-                    <constraint firstAttribute="trailing" secondItem="Jq1-iD-LsE" secondAttribute="trailing" id="Nta-sr-t4y"/>
-                    <constraint firstItem="Jq1-iD-LsE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="biY-st-bJN"/>
-                    <constraint firstAttribute="bottom" secondItem="Jq1-iD-LsE" secondAttribute="bottom" id="pye-3s-rdT"/>
+                    <constraint firstItem="Pnz-EY-rbG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="74" id="WUx-8s-Xlk"/>
+                    <constraint firstItem="Pnz-EY-rbG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="y26-af-b3K"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="subcategoryLabel" destination="Jq1-iD-LsE" id="mTz-fF-gkL"/>
+                <outlet property="subcategoryLabel" destination="Pnz-EY-rbG" id="obQ-Wb-m5W"/>
             </connections>
             <point key="canvasLocation" x="-314.49275362318843" y="-9.375"/>
         </tableViewCell>

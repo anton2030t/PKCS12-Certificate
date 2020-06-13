@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        webManager.getCertificate { [weak self] (certificate) in
+        webManager.getCertificate { (certificate) in
             
         }
         
@@ -71,10 +71,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             
         }
         
-        webManager.loadImage(imageId: catalogElement[section].icon, height: "75", width: "") { (images) in
-            cell.categoryImageView.image = images[section].image
+        webManager.loadImage(imageId: catalogElement[section].icon, height: "100", width: "100") { (images) in
+            cell.categoryImageView.image = images.image
         }
         
+        cell.categoryImageView.layer.cornerRadius = cell.categoryImageView.frame.size.height/2
         cell.categoryLabel.setTitle(catalogElement[section].title, for: .normal)
         return cell.contentView
         
@@ -106,9 +107,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SubcategoryCell.identifier, for: indexPath) as! SubcategoryCell
         let section = catalogElement[indexPath.section]
-        cell.subcategoryLabel.setTitle(section.items[indexPath.row].title, for: .normal)
+        cell.subcategoryLabel.text = section.items[indexPath.row].title
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let detail = catalogElement[indexPath.section].items
+        let vc = DetailViewController()
+        vc.entry.text = detail[indexPath.row].title
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class SubcategoryCell: UITableViewCell {
         
-    @IBOutlet weak var subcategoryLabel: UIButton!
+    @IBOutlet weak var subcategoryLabel: UILabel!
     
     static let identifier = "SubcategoryCell"
 
@@ -23,10 +23,6 @@ class SubcategoryCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-    }
-    
-    @IBAction func subcategoryButton(_ sender: UIButton) {
-        
     }
     
 }

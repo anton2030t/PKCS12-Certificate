@@ -99,25 +99,22 @@ class WebManager {
         return "http://mi-test.izibook.ru/imagemanager/manager/singleget?&image=\(imageId)&h=\(height)&w=\(width)"
     }
     
-    func loadImage(imageId: String, height: String, width: String, completion: @escaping ([ImageModel])->()) {
+    func loadImage(imageId: String, height: String, width: String, completion: @escaping (ImageModel)->()) {
         guard let url = URL(string: imageURL(imageId: imageId, height: height, width: width)) else { return }
-        
-        let jsonData = try? JSONSerialization.data(withJSONObject: json)
-        
+                
         let session = URLSession(configuration: URLSessionConfiguration.ephemeral,
                                  delegate: URLSessionPinningDelegate(),
                                  delegateQueue: OperationQueue.main)
         
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.httpBody = jsonData
+        request.httpMethod = "GET"
         request.setValue("ru-RU", forHTTPHeaderField: "x-lang")
         
         session.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
             
-//            let images = ImageModel(image: UIImage(data: data)!)
-//            completion([images])
+            let images = ImageModel(image: UIImage(data: data)!)
+            completion(images)
             
         }.resume()
     }
