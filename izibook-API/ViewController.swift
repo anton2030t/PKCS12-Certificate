@@ -18,13 +18,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        webManager.getCertificate { (certificate) in
-            
-        }
-        
-        webManager.getCatalog { [weak self] (catalog) in
-            self?.catalogElement = catalog!.data
-            self?.myTableView.reloadData()
+        webManager.getCertificate { [weak self] (certificate) in
+            self?.webManager.getCatalog { [weak self] (catalog) in
+                self?.catalogElement = catalog!.data
+                self?.myTableView.reloadData()
+            }
         }
         
         myTableView.register(UINib(nibName: SubcategoryCell.identifier, bundle: Bundle.main), forCellReuseIdentifier: SubcategoryCell.identifier)
@@ -48,6 +46,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CategoryCell.identifier) as! CategoryCell
+        
+        cell.categoryImageView.layer.cornerRadius = cell.categoryImageView.frame.size.height/2
+        cell.categoryLabel.setTitle(catalogElement[section].title, for: .normal)
+        let popularity = catalogElement[section].popularity
+        cell.chevronImageView.image = popularity ? UIImage(systemName: "chevron.up") : UIImage(systemName: "chevron.down")
         
         cell.openCategoryCallBack = { [unowned self] in
             cell.categoryLabel.tag = section
@@ -75,8 +78,6 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             cell.categoryImageView.image = images.image
         }
         
-        cell.categoryImageView.layer.cornerRadius = cell.categoryImageView.frame.size.height/2
-        cell.categoryLabel.setTitle(catalogElement[section].title, for: .normal)
         return cell.contentView
         
     }
