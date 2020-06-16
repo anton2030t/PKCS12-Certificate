@@ -110,10 +110,6 @@ class WebManager: NSObject {
                                  delegate: self,
                                  delegateQueue: OperationQueue.main)
         
-        var request = URLRequest(url: url)
-        request.httpMethod = "GET"
-        request.setValue("ru-RU", forHTTPHeaderField: "x-lang")
-        
         session.dataTask(with: url) { (data, response, error) in
             guard let data = data else { return }
             

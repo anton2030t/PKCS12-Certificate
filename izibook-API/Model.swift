@@ -13,11 +13,6 @@ import UIKit
 struct CertificateModel: Codable {
     var result: String
     var data: CertificateData
-    
-    enum CodingKeys: String, CodingKey {
-        case result
-        case data
-    }
 }
 
 struct CertificateData: Codable {
@@ -49,12 +44,6 @@ struct CatalogModel: Codable {
     var data: [CatalogElement]
     var result: String
     var results: Int
-    
-    enum CodingKeys: String, CodingKey {
-        case data
-        case result
-        case results
-    }
 }
 
 struct CatalogElement: Codable {
@@ -63,14 +52,6 @@ struct CatalogElement: Codable {
     var title: String
     var id: Int
     var items: [CatalogItem]
-    
-    enum CodingKeys: String, CodingKey {
-        case popularity
-        case icon
-        case title
-        case id
-        case items
-    }
 }
 
 struct CatalogItem: Codable {
