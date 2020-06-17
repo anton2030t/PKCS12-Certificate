@@ -34,9 +34,7 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SubcategoryCell.identifier)
-        let cellHeight = cell?.frame.size.height
-        return cellHeight!
+        return 50
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -83,9 +81,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CategoryCell.identifier)
-        let cellHeight = cell?.frame.size.height
-        return cellHeight!
+        return 82
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
