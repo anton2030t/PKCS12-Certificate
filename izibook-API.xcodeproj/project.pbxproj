@@ -72,23 +72,18 @@
 		6C583D022490B499001BAF4F /* izibook-API */ = {
 			isa = PBXGroup;
 			children = (
-				6C583D032490B499001BAF4F /* AppDelegate.swift */,
-				6C583D052490B499001BAF4F /* SceneDelegate.swift */,
-				6C583D072490B499001BAF4F /* ViewController.swift */,
-				6C36E73A2495158D007F89E0 /* DetailViewController.swift */,
-				6C583D202490B91A001BAF4F /* Model.swift */,
-				6C583D2A24912930001BAF4F /* WebManager.swift */,
-				6C43F15F249232B80062393A /* PKCS12.swift */,
-				6C583D1F2490B8B4001BAF4F /* Cell */,
-				6C583D092490B499001BAF4F /* Main.storyboard */,
-				6C583D0C2490B49C001BAF4F /* Assets.xcassets */,
-				6C583D0E2490B49C001BAF4F /* LaunchScreen.storyboard */,
-				6C583D112490B49C001BAF4F /* Info.plist */,
+				6CC4540E2535E7F20032307E /* App */,
+				6CC4540D2535E7E80032307E /* ViewController */,
+				6CC4540B2535E7E10032307E /* Model */,
+				6CC454092535E7D90032307E /* Service */,
+				6C583D1F2490B8B4001BAF4F /* View */,
+				6CC454062535E7CA0032307E /* Storyboard */,
+				6CC454042535E77A0032307E /* Resources */,
 			);
 			path = "izibook-API";
 			sourceTree = "<group>";
 		};
-		6C583D1F2490B8B4001BAF4F /* Cell */ = {
+		6C583D1F2490B8B4001BAF4F /* View */ = {
 			isa = PBXGroup;
 			children = (
 				6C583D262490D44B001BAF4F /* CategoryCell.swift */,
@@ -96,7 +91,60 @@
 				6C583D1B2490B8B1001BAF4F /* SubcategoryCell.swift */,
 				6C583D1C2490B8B1001BAF4F /* SubcategoryCell.xib */,
 			);
-			path = Cell;
+			path = View;
+			sourceTree = "<group>";
+		};
+		6CC454042535E77A0032307E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6C583D0C2490B49C001BAF4F /* Assets.xcassets */,
+				6C583D112490B49C001BAF4F /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		6CC454062535E7CA0032307E /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				6C583D092490B499001BAF4F /* Main.storyboard */,
+				6C583D0E2490B49C001BAF4F /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		6CC454092535E7D90032307E /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				6C583D2A24912930001BAF4F /* WebManager.swift */,
+				6C43F15F249232B80062393A /* PKCS12.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		6CC4540B2535E7E10032307E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6C583D202490B91A001BAF4F /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6CC4540D2535E7E80032307E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6C583D072490B499001BAF4F /* ViewController.swift */,
+				6C36E73A2495158D007F89E0 /* DetailViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		6CC4540E2535E7F20032307E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				6C583D032490B499001BAF4F /* AppDelegate.swift */,
+				6C583D052490B499001BAF4F /* SceneDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,7 +374,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KWAG9NLQG9;
-				INFOPLIST_FILE = "izibook-API/Info.plist";
+				INFOPLIST_FILE = "izibook-API/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -344,7 +392,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KWAG9NLQG9;
-				INFOPLIST_FILE = "izibook-API/Info.plist";
+				INFOPLIST_FILE = "izibook-API/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
